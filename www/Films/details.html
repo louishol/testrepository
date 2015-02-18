@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+
+<link rel="stylesheet" href="../css/style.mobile.css" />
+<link rel="stylesheet" href="../css/style.css">
+
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.mobile.js"></script>
+
+</head>
+
+<body>
+    <div class="demo-wrapper" data-role="page">
+        <!-- panel 01 -->
+        <div class="panel left" data-role="panel" data-position="left" data-display="push" id="panel-01">
+            <ul>
+                <li class="newsfeed"><a href="../index.html" title="Home">Home</a></li>
+                <li class="profile"><a href="#" title="Profile">Films</a></li>
+                <li class="setting"><a href="../Series/index.html" title="Setting">Series</a></li>
+                <li class="logout"><a href="../Tekenfilms/index.html" title="Logout">Tekenfilms</a></li>
+            </ul>
+        </div>
+        <div class="header" data-role="header">
+            <span class="open left"><a href="#panel-01">&#61641;</a></span>
+            <span class="title">NachoTime</span>
+        </div>
+        <div class="content" data-role="content">
+            <h3>Film </h3>
+            <p>Gekozen film is</p>
+            <p id="information"> <p>
+                <p id="test"><p>
+            
+        <ul id="movies" data-role="listview" data-inset="true" class="ui-alt-icon">
+        </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+    function CountObject(obj)
+    {
+        var count = 0;
+        for(var prop in obj)
+        {
+            count++;
+        }
+        return count;
+    }
+    function getParameterByName(name) 
+    {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+
+    $(document).ready(function()
+    {
+
+        $("#test").html("Trol");
+        var filmslist = [
+            { titel: 'Titanic', beschrijving: "Grote botsing", id: 1},
+            { titel: 'Saving private henk', beschrijving: "Oorlog", id: 2},
+            { titel: 'American Sniper', beschrijving: "Sniper", id: 3}
+        ];
+
+        var id = getParameterByName('id');
+
+        $("#information").html("id = " + id);
+        for(var i =0; i<CountObject(filmslist); i++)
+        {
+            if(filmslist[i].id == id)
+            {
+                $("#information").html("Film titel is " + filmslist[i].titel + " met beschrijving " + filmslist[i].beschrijving);
+            }
+        }
+    });
+    </script>
+</body>
+</html>
